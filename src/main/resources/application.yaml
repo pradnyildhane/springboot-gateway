@@ -1,0 +1,17 @@
+server:
+  port: 8050
+
+spring:
+  application:
+    name: spring-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: baeldung_route
+          uri: http://baeldung.com
+          predicates:
+            - Path=/baeldung/
+        - id: MOVIE-CATALOG-SERVICE
+          uri: lb://MOVIE-CATALOG-SERVICE
+          predicates:
+            - Path=/hello/**
